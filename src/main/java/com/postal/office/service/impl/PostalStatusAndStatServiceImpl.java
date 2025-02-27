@@ -5,7 +5,6 @@ import com.postal.office.model.RegistrationAndMovementOfPostalItems;
 import com.postal.office.repository.PostalItemRepository;
 import com.postal.office.repository.RegistrationAndMovementOfPostalItemsRepository;
 import com.postal.office.service.PostalStatusAndStatService;
-import com.postal.office.service.TransportationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,19 +13,17 @@ import java.util.List;
 public class PostalStatusAndStatServiceImpl implements PostalStatusAndStatService {
 
     private final RegistrationAndMovementOfPostalItemsRepository registrationAndMovementOfPostalItemsRepository;
-    private final TransportationService transportationService;
     private final PostalItemRepository postalItemRepository;
 
-    public PostalStatusAndStatServiceImpl(RegistrationAndMovementOfPostalItemsRepository registrationAndMovementOfPostalItemsRepository, TransportationService transportationService,
+    public PostalStatusAndStatServiceImpl(RegistrationAndMovementOfPostalItemsRepository registrationAndMovementOfPostalItemsRepository,
                                           PostalItemRepository postalItemRepository) {
         this.registrationAndMovementOfPostalItemsRepository = registrationAndMovementOfPostalItemsRepository;
-        this.transportationService = transportationService;
         this.postalItemRepository = postalItemRepository;
     }
 
     @Override
     public PostalItem postalStatus(Long postalItemId) {
-        PostalItem postalItem = postalItemRepository.findByPostalItemId(postalItemId);
+        PostalItem postalItem = postalItemRepository.findPostalItemByPostalItemId(postalItemId);
         postalItem.setStatus(true);
         postalItemRepository.save(postalItem);
         return postalItem;

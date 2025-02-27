@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RegistrationAndMovementOfPostalItemsRepository extends JpaRepository<RegistrationAndMovementOfPostalItems, Long> {
-    RegistrationAndMovementOfPostalItems findByPostalItem_PostalItemId(Long postalItemIndex);
     List <RegistrationAndMovementOfPostalItems> findAllByPostalItem_PostalItemId(Long postalItemIndex);
+    RegistrationAndMovementOfPostalItems findRegistrationAndMovementOfPostalItemsByPostalItem_PostalItemId(Long postalItemId);
 }

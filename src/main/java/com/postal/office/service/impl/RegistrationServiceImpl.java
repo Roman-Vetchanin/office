@@ -1,10 +1,8 @@
 package com.postal.office.service.impl;
 
-import com.postal.office.exception.OfficeNotFoundException;
 import com.postal.office.model.PostalItem;
 import com.postal.office.model.PostalOffice;
 import com.postal.office.model.RegistrationAndMovementOfPostalItems;
-import com.postal.office.model.Type;
 import com.postal.office.model.dto.PostalItemDto;
 import com.postal.office.repository.PostalItemRepository;
 import com.postal.office.repository.PostalOfficeRepository;
@@ -58,7 +56,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
     public PostalOffice findPostalOfficeByOfficeIndex(Long officeIndex) {
         return postalOfficeRepository.
-                findByOfficeIndex(officeIndex);
+                findPostalOfficeByOfficeIndex(officeIndex);
     }
 
     public void registerOrMovePostalItem(PostalItem postalItem, PostalOffice postalOffice) {
